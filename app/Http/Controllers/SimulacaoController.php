@@ -31,4 +31,17 @@ class SimulacaoController extends Controller
         }
         return 0.00;
     }
+
+    public function listarSimulacao()
+    {
+        $simulacoes = TableLancFuturo::all();
+        return view('listar_simulacao', ['simulacoes' => $simulacoes]);
+    }
+
+    public function deletarSimulacao(Request $request)
+    {
+        $deleted = TableLancFuturo::find($request->id)->delete();
+
+        return redirect('/simulacao/listar')->with('status', 'warning')->with('mensagem', 'Simulação excluida!');
+    }
 }

@@ -32,4 +32,6 @@ Route::post('/saldo/lancar', [SaldoController::class, 'lancarSaldo']);
 
 Route::get('/simulacao', [SimulacaoController::class, 'index']);
 Route::post('/simulacao/lancar', [SimulacaoController::class, 'lancarSimulacao']);
+Route::get('/simulacao/listar', [SimulacaoController::class, 'listarSimulacao']);
+Route::post('/simulacao/deletar', [SimulacaoController::class, 'deletarSimulacao']);
 

@@ -159,7 +159,7 @@
                                         <a href="{{url('/simulacao')}}">Lançar simulação</a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/simulacao')}}">Listar simulações </a>
+                                        <a href="{{url('/simulacao/listar')}}">Listar simulações </a>
                                     </li>
                                 </ul>
                             </li>
