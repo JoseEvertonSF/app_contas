@@ -147,12 +147,6 @@
                             </li>
                             <li>
                                 <a href="{{url('/')}}">
-                                    <i data-feather="file"></i>
-                                    <span> Faturas </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('/')}}">
                                     <i data-feather="dollar-sign"></i>
                                     <span> Saldo </span>
                                     <span class="menu-arrow"></span>
@@ -160,6 +154,12 @@
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
                                         <a href="{{url('/saldo')}}">Lançar Saldo</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('/simulacao')}}">Lançar simulação</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('/simulacao')}}">Listar simulações </a>
                                     </li>
                                 </ul>
                             </li>

@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SaldoController;
+use App\Http\Controllers\SimulacaoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,6 @@ Route::post('/register/create', [RegisterController::class, 'register']);
 Route::get('/saldo', [SaldoController::class, 'formSaldoLancar']);
 Route::post('/saldo/lancar', [SaldoController::class, 'lancarSaldo']);
 
-Route::get('/teste', [NubankController::class, 'listarFaturas']);
+Route::get('/simulacao', [SimulacaoController::class, 'index']);
+Route::post('/simulacao/lancar', [SimulacaoController::class, 'lancarSimulacao']);
+

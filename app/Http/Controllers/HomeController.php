@@ -14,8 +14,16 @@ class HomeController extends Controller
         $saldo = SaldoController::retornaSaldo();
         $saldoFormat = $saldo == false ? '0,00' : number_format($saldo, 2, ',', '.');
 
+        // Saldo + lançamentos futuros
+        $valoresFuturos = SimulacaoController::retornaSimulacao();
+        $lancamentosFuturos = number_format(($saldo + $valoresFuturos), 2, ',', '.');
+
         return view('home', 
-            ['saldo' => ['valor' => $saldoFormat]]
+            [
+                'saldo' => ['valor' => $saldoFormat],
+                'lanc_futuros' => ['valor' => $lancamentosFuturos]
+            
+            ]
         );
     }
 }

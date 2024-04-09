@@ -32,7 +32,7 @@
                             <div class="media p-3">
                                 <div class="media-body">
                                     <span class="text-muted text-uppercase font-size-12 font-weight-bold">Saldo + Lançamentos futuros</span>
-                                    <h2 class="mb-0">1065</h2>
+                                    <h2 class="mb-0">R$ {{$lanc_futuros['valor']}}</h2>
                                 </div>
                                 <div class="align-self-center">
                                     <div data-feather="alert-circle" class="align-self-center icon-dual-success icon-lg"></div>
