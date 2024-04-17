@@ -27,16 +27,17 @@ Route::post('/auth', [AuthController::class, 'auth']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register/create', [RegisterController::class, 'register']);
 
-Route::get('/saldo', [SaldoController::class, 'formSaldoLancar']);
-Route::post('/saldo/lancar', [SaldoController::class, 'lancarSaldo']);
+Route::get('/saldo', [SaldoController::class, 'formSaldoLancar'])->middleware('auth');
+Route::post('/saldo/lancar', [SaldoController::class, 'lancarSaldo'])->middleware('auth');
 
-Route::get('/simulacao', [SimulacaoController::class, 'index']);
-Route::post('/simulacao/lancar', [SimulacaoController::class, 'lancarSimulacao']);
-Route::get('/simulacao/listar', [SimulacaoController::class, 'listarSimulacao']);
-Route::post('/simulacao/deletar', [SimulacaoController::class, 'deletarSimulacao']);
+Route::get('/simulacao', [SimulacaoController::class, 'index'])->middleware('auth');
+Route::post('/simulacao/lancar', [SimulacaoController::class, 'lancarSimulacao'])->middleware('auth');
+Route::get('/simulacao/listar', [SimulacaoController::class, 'listarSimulacao'])->middleware('auth');
+Route::post('/simulacao/deletar', [SimulacaoController::class, 'deletarSimulacao'])->middleware('auth');
 
-Route::get('/beneficiario', [BeneficiarioController::class, 'index']);
-Route::get('/beneficiario/cadastro', [BeneficiarioController::class, 'viewCadastro']);
-Route::post('/beneficiario/cadastro/create', [BeneficiarioController::class, 'cadastrar']);
-Route::get('/beneficiario/lista', [BeneficiarioController::class, 'listaBeneficiarios']);
+Route::get('/beneficiario', [BeneficiarioController::class, 'index'])->middleware('auth');
+Route::get('/beneficiario/cadastro', [BeneficiarioController::class, 'viewCadastro'])->middleware('auth');
+Route::post('/beneficiario/cadastro/create', [BeneficiarioController::class, 'cadastrar'])->middleware('auth');
+Route::get('/beneficiario/lista', [BeneficiarioController::class, 'listaBeneficiarios'])->middleware('auth');
+Route::post('/beneficiario/deletar', [BeneficiarioController::class, 'deletarBeneficiario'])->middleware('auth');
 

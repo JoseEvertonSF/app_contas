@@ -49,4 +49,14 @@ class BeneficiarioController extends Controller
         $beneficiarios = TableBeneficiario::all();
         return view('lista_beneficiario', ['beneficiarios' => $beneficiarios]);
     }
+
+    public function deletarBeneficiario(Request $request)
+    {
+        $id = $request->id;
+        if(isset($id)){
+            $deleted = TableBeneficiario::where('id', $id)->delete();
+            return redirect('/beneficiario/lista')->with('status', 'warning')->with('mensagem', 'Beneficiário excluido com sucesso!');
+        }
+        return redirect('/beneficiario/lista')->with('status', 'danger')->with('mensagem', 'Não foi possivel realizar a solicitação');
+    }
 }
