@@ -40,4 +40,5 @@ Route::get('/beneficiario/cadastro', [BeneficiarioController::class, 'viewCadast
 Route::post('/beneficiario/cadastro/create', [BeneficiarioController::class, 'cadastrar'])->middleware('auth');
 Route::get('/beneficiario/lista', [BeneficiarioController::class, 'listaBeneficiarios'])->middleware('auth');
 Route::post('/beneficiario/deletar', [BeneficiarioController::class, 'deletarBeneficiario'])->middleware('auth');
+Route::post('/beneficiario/edit', [BeneficiarioController::class, 'editarBeneficiario'])->middleware('auth');
 
