@@ -171,9 +171,18 @@
                             </li>
                             <li>
                                 <a href="{{url('/')}}">
-                                    <i data-feather="file"></i>
-                                    <span> Extrato </span>
+                                    <i data-feather="database"></i>
+                                    <span>Parâmetros </span>
+                                    <span class="menu-arrow"></span>
                                 </a>
+                                <ul class="nav-second-level" arai-expanded="false">
+                                    <li>
+                                        <a href="{{url('/beneficiario')}}">Beneficiario</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('/tipo_despesa')}}">Tipo de despesa</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>

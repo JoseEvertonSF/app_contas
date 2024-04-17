@@ -7,7 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SaldoController;
 use App\Http\Controllers\SimulacaoController;
-
+use App\Http\Controllers\BeneficiarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,4 +34,9 @@ Route::get('/simulacao', [SimulacaoController::class, 'index']);
 Route::post('/simulacao/lancar', [SimulacaoController::class, 'lancarSimulacao']);
 Route::get('/simulacao/listar', [SimulacaoController::class, 'listarSimulacao']);
 Route::post('/simulacao/deletar', [SimulacaoController::class, 'deletarSimulacao']);
+
+Route::get('/beneficiario', [BeneficiarioController::class, 'index']);
+Route::get('/beneficiario/cadastro', [BeneficiarioController::class, 'viewCadastro']);
+Route::post('/beneficiario/cadastro/create', [BeneficiarioController::class, 'cadastrar']);
+Route::get('/beneficiario/lista', [BeneficiarioController::class, 'listaBeneficiarios']);
 
