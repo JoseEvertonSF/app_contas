@@ -44,4 +44,6 @@ Route::get('/beneficiario/lista', [BeneficiarioController::class, 'listaBenefici
 Route::post('/beneficiario/deletar', [BeneficiarioController::class, 'deletarBeneficiario'])->middleware('auth');
 Route::post('/beneficiario/edit', [BeneficiarioController::class, 'editarBeneficiario'])->middleware('auth');
 
-Route::get('/despesas', [DespesasController::class, 'index']);
+Route::get('/despesas', [DespesasController::class, 'index'])->middleware('auth');
+Route::get('/despesas/tipo/cadastro', [DespesasController::class, 'formCadastroDespesas'])->middleware('auth');
+Route::post('/despesas/tipo/cadastro/insert', [DespesasController::class, 'cadastrarTipo']);
