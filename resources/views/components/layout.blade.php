@@ -164,7 +164,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="{{url('/')}}">
+                                <a href="{{url('/despesas')}}">
                                     <i data-feather="trending-down"></i>
                                     <span> Despesas </span>
                                 </a>
@@ -178,9 +178,6 @@
                                 <ul class="nav-second-level" arai-expanded="false">
                                     <li>
                                         <a href="{{url('/beneficiario')}}">Beneficiario</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{url('/tipo_despesa')}}">Tipo de despesa</a>
                                     </li>
                                 </ul>
                             </li>
