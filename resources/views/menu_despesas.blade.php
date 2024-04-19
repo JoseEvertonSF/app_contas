@@ -35,7 +35,7 @@
                     <div class="card">
                         <div class="card-body row">
                             <i data-feather="list" class="icon-dual-primary"></i>
-                            <a href="{{url('/despesa/tipo/lista')}}" class="col-xl-10">Listar tipos de despesas</a>
+                            <a href="{{url('/despesas/tipo/lista')}}" class="col-xl-10">Listar tipos de despesas</a>
                         </div>
                     </div>
                 </div>
