@@ -36,4 +36,11 @@ class DespesasController extends Controller
 
         return redirect('/despesas/tipo/cadastro')->with('status', 'warning')->with('mensagem', 'A nomenclatura deve ser preenchida!');
     }
+
+    public function listarTipo()
+    {
+        $tiposDespesas = $ultimoCodigo = TipoDespesa::all();
+
+        return view('listar_tipo_despesas', ['tipoDespesas' => $tiposDespesas]);
+    }
 }
