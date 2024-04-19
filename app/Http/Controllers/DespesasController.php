@@ -14,14 +14,7 @@ class DespesasController extends Controller
 
     public function formCadastroDespesas()
     {   
-        $ultimoCodigo = TipoDespesa::all()->max('id');
-        $codigo = 1;
-
-        if($ultimoCodigo != null){
-            $codigo = $ultimoCodigo + 1;
-        }
-
-        return view('cadastro_tipo_despesas', ['codigo' => $codigo]);
+        return view('cadastro_tipo_despesas');
     }
 
     public function cadastrarTipo(Request $request)
@@ -39,8 +32,40 @@ class DespesasController extends Controller
 
     public function listarTipo()
     {
-        $tiposDespesas = $ultimoCodigo = TipoDespesa::all();
+        $tiposDespesas = $ultimoCodigo = TipoDespesa::orderBy('id')->get();
 
         return view('listar_tipo_despesas', ['tipoDespesas' => $tiposDespesas]);
+    }
+
+    public function editarTipo(Request $request)
+    {
+        $validaRequest = $request->validate([
+            'id' => ['required'],
+            'nomenclatura' => ['required']
+        ]);
+
+        $verificaId = TipoDespesa::find($request->id);
+
+        if(!empty($validaRequest) && $verificaId !== null){
+            $tipoDespesa = TipoDespesa::find($request->id);
+            $tipoDespesa->nomenclatura = $request->nomenclatura;
+            $tipoDespesa->save();
+            return redirect('despesas/tipo/lista')->with('status', 'success')->with('mensagem', 'Tipo de despesa editado!');
+        }
+        
+    }
+
+    public function excluirTipo(Request $request)
+    {   
+        $validaRequest = $request->validate([
+            'id' => ['required']
+        ]);
+        $verificaId = TipoDespesa::find($request->id);
+
+        if(!empty($validaRequest) && $verificaId !== null){
+            $deleted = TipoDespesa::find($request->id)->delete();
+            return redirect('despesas/tipo/lista')->with('status', 'warning')->with('mensagem', 'Tipo de despesa excluido!');
+        }
+        
     }
 }
