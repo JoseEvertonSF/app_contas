@@ -33,7 +33,7 @@
                                         <td>{{date('d/m/Y H:i:s', strtotime($despesas->created_at))}}</td>
                                         <td>{{date('d/m/Y H:i:s', strtotime($despesas->updated_at))}}</td>
                                         <td>
-                                            <form method="POST" action="{{url('/beneficiario/deletar')}}">
+                                            <form method="POST" action="{{url('/despesas/tipo/lista/excluir')}}">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$despesas->id}}">
                                                 <button type="submit" class="btn btn-soft-danger">Excluir</button>
@@ -52,12 +52,12 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form method="POST" action="{{url('/beneficiario/edit')}}">
+                                                            <form method="POST" action="{{url('/despesas/tipo/lista/editar')}}">
                                                                 @csrf
                                                                 <input type="hidden" name="id" value="{{$despesas->id}}">
                                                                 <div class="form-group">
                                                                     <label class="text-muted font-size-15 font-weight-bold">Nomenclatura</label>
-                                                                    <input type="text" class="form-control" name="cgc" required id="cgc" value="{{$despesas->nomenclatura}}">
+                                                                    <input type="text" class="form-control" name="nomenclatura" required id="nomenclatura" value="{{$despesas->nomenclatura}}">
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="submit" class="btn btn-success">Salvar</button>
