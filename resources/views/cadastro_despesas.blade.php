@@ -47,7 +47,7 @@
                                             <label class="custom-control-label text-muted font-size-15" for="valor_total">Total</label>
                                         </div>
                                         <div class="custom-control custom-radio col-md-2">
-                                            <input type="radio" class="custom-control-input" name="tipo_valor" id="" value="parcela" required>
+                                            <input type="radio" class="custom-control-input" name="tipo_valor" id="valor_parcela" value="parcela" required>
                                             <label class="custom-control-label text-muted font-size-15" for="valor_parcela">Parcela</label>
                                         </div>
                                     </div>
