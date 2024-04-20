@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-body row">
                             <i data-feather="plus-circle" class="icon-dual-success"></i>
-                            <a href="{{url('/despesa/cadastro')}}" class="col-xl-10">Cadastrar Despesa</a>
+                            <a href="{{url('/despesa/cadastro')}}" class="col-xl-10">Cadastrar despesa</a>
                         </div>
                     </div>
                 </div>

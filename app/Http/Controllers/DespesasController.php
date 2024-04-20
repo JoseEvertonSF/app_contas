@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TipoDespesa;
+use App\Models\Despesas;
+use App\Models\TableBeneficiario;
 
 class DespesasController extends Controller
 {
@@ -12,60 +14,47 @@ class DespesasController extends Controller
         return view('menu_despesas');
     }
 
-    public function formCadastroDespesas()
+   
+    public function formCadastroDespesa()
     {   
-        return view('cadastro_tipo_despesas');
+        $beneficiarios = TableBeneficiario::select('id', 'codigo', 'nome')->get();
+        $tipoDespesas = TipoDespesa::all();
+        $scripts = ['https://cdn.jsdelivr.net/npm/jquery-maskmoney@3.0.2/dist/jquery.maskMoney.min.js', 'assets/js/formataValor.js'];
+
+        return view('cadastro_despesas', ['beneficiarios' => $beneficiarios, 'tipoDespesas' => $tipoDespesas, 'scripts' => $scripts]);
     }
 
-    public function cadastrarTipo(Request $request)
+    public function cadastrarDespesa(Request $request)
     {   
-        if($request->nomenclatura !== null){
-            $tipoDepesa = new TipoDespesa();
-            $tipoDepesa->nomenclatura = $request->nomenclatura;
-            $tipoDepesa->save();
-    
-            return redirect('/despesas/tipo/cadastro')->with('status', 'success')->with('mensagem', 'Tipo de despesa cadastrado com sucesso!');
-        }
-
-        return redirect('/despesas/tipo/cadastro')->with('status', 'warning')->with('mensagem', 'A nomenclatura deve ser preenchida!');
-    }
-
-    public function listarTipo()
-    {
-        $tiposDespesas = $ultimoCodigo = TipoDespesa::orderBy('id')->get();
-
-        return view('listar_tipo_despesas', ['tipoDespesas' => $tiposDespesas]);
-    }
-
-    public function editarTipo(Request $request)
-    {
-        $validaRequest = $request->validate([
-            'id' => ['required'],
-            'nomenclatura' => ['required']
+        $validacaoRequest = $request->validate([
+            'tipo_despesa' => ['required'],
+            'beneficiario' => ['required'],
+            'emissao' => ['required'],
+            'vencimento' => ['required'],
+            'valor' => ['required'],
+            'qtde_parcela' => ['required'],
+            'tipo_valor' => ['required']
         ]);
 
-        $verificaId = TipoDespesa::find($request->id);
+        if(!empty($validacaoRequest)){
+            $vencimento = $request->vencimento;
+            $valor = str_replace(',', '.',str_replace('.', '', $request->valor));
+            $valorFinal = $request->tipo_valor == 'total' ? floatval($valor) / intval($request->qtde_parcela) : $valor;
+            for($parcela = 1 ; $parcela <=  $request->qtde_parcela; $parcela++){
+                $despesa = new Despesas();
+                $despesa->beneficiario = $request->beneficiario;
+                $despesa->valor = $valorFinal;
+                $despesa->parcela = $parcela;
+                $despesa->emissao = $request->emissao;
+                $despesa->vencimento = $vencimento;
+                $despesa->tipo_despesa = $request->tipo_despesa;
+                $despesa->save();
 
-        if(!empty($validaRequest) && $verificaId !== null){
-            $tipoDespesa = TipoDespesa::find($request->id);
-            $tipoDespesa->nomenclatura = $request->nomenclatura;
-            $tipoDespesa->save();
-            return redirect('despesas/tipo/lista')->with('status', 'success')->with('mensagem', 'Tipo de despesa editado!');
+                $vencimento = date('Y-m-d', strtotime('+1 month', strtotime($vencimento)));
+            }
+
+            return redirect('/despesa/cadastro')->with('status', 'success')->with('mensagem', 'Despesa cadastrada com sucesso!');
+
         }
-        
-    }
-
-    public function excluirTipo(Request $request)
-    {   
-        $validaRequest = $request->validate([
-            'id' => ['required']
-        ]);
-        $verificaId = TipoDespesa::find($request->id);
-
-        if(!empty($validaRequest) && $verificaId !== null){
-            $deleted = TipoDespesa::find($request->id)->delete();
-            return redirect('despesas/tipo/lista')->with('status', 'warning')->with('mensagem', 'Tipo de despesa excluido!');
-        }
-        
     }
 }
