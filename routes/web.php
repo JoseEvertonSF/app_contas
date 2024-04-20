@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NubankController;
+use App\Models\TipoDespesa;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\SaldoController;
 use App\Http\Controllers\SimulacaoController;
 use App\Http\Controllers\BeneficiarioController;
 use App\Http\Controllers\DespesasController;
+use App\Http\Controllers\TipoDespesasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,8 +47,11 @@ Route::post('/beneficiario/deletar', [BeneficiarioController::class, 'deletarBen
 Route::post('/beneficiario/edit', [BeneficiarioController::class, 'editarBeneficiario'])->middleware('auth');
 
 Route::get('/despesas', [DespesasController::class, 'index'])->middleware('auth');
-Route::get('/despesas/tipo/cadastro', [DespesasController::class, 'formCadastroDespesas'])->middleware('auth');
-Route::post('/despesas/tipo/cadastro/insert', [DespesasController::class, 'cadastrarTipo']);
-Route::get('/despesas/tipo/lista', [DespesasController::class, 'listarTipo']);
-Route::post('/despesas/tipo/lista/excluir', [DespesasController::class, 'excluirTipo']);
-Route::post('/despesas/tipo/lista/editar', [DespesasController::class, 'editarTipo']);
+Route::get('/despesas/tipo/cadastro', [TipoDespesasController::class, 'formCadastroTipoDespesas'])->middleware('auth');
+Route::post('/despesas/tipo/cadastro/insert', [TipoDespesasController::class, 'cadastrarTipo']);
+Route::get('/despesas/tipo/lista', [TipoDespesasController::class, 'listarTipo']);
+Route::post('/despesas/tipo/lista/excluir', [TipoDespesasController::class, 'excluirTipo']);
+Route::post('/despesas/tipo/lista/editar', [TipoDespesasController::class, 'editarTipo']);
+
+Route::get('/despesa/cadastro', [DespesasController::class, 'formCadastroDespesa']);
+Route::post('/despesa/cadastro/insert', [DespesasController::class, 'cadastrarDespesa']);
