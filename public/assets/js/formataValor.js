@@ -1,4 +1,4 @@
-var input = $('#valor')
+var input = $('.valor')
 input.maskMoney(
     {
        prefix: 'R$ ',

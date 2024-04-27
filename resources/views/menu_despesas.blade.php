@@ -19,7 +19,7 @@
                     <div class="card">
                         <div class="card-body row">
                             <i data-feather="list" class="icon-dual-primary"></i>
-                            <a href="{{url('/despesa/lista')}}" class="col-xl-10">Listar despesas</a>
+                            <a href="{{url('/despesa/lista/form')}}" class="col-xl-10">Listar despesas</a>
                         </div>
                     </div>
                 </div>

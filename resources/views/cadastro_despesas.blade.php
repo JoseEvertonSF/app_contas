@@ -51,8 +51,7 @@
                                             <label class="custom-control-label text-muted font-size-15" for="valor_parcela">Parcela</label>
                                         </div>
                                     </div>
-
-                                    <input type="text" class="form-control" name="valor" required id="valor">
+                                    <input type="text" class="form-control valor" name="valor" required id="valor">
                                 </div>
                                 <div class="form-group">
                                     <label class="text-muted font-size-15 font-weight-bold">Quantidade de parcelas</label>
