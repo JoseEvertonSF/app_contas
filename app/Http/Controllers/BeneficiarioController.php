@@ -72,6 +72,9 @@ class BeneficiarioController extends Controller
         {
             $dadosBeneficiario = TableBeneficiario::select('cgc', 'nome', 'tipo')->where('id', $request->id)->get()->toArray();
             $colunaEdicao = array_diff($validateRequest, $dadosBeneficiario[0]);
+            if(count($colunaEdicao) == 0){
+                return redirect('/beneficiario/lista');
+            }
             $beneficiario = TableBeneficiario::find($request->id);
             foreach($colunaEdicao as $key => $novoValor)
             {   

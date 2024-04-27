@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="text-muted font-size-15 font-weight-bold">Valor</label>
-                                    <input type="text" class="form-control" name="valor" required id="valor">
+                                    <input type="text" class="form-control valor" name="valor" required id="valor">
                                 </div>
                                 <div class="form-group">
                                     <input class="btn btn-success col-md-12" type="submit" class="form-control" value="Registrar">

@@ -55,3 +55,7 @@ Route::post('/despesas/tipo/lista/editar', [TipoDespesasController::class, 'edit
 
 Route::get('/despesa/cadastro', [DespesasController::class, 'formCadastroDespesa']);
 Route::post('/despesa/cadastro/insert', [DespesasController::class, 'cadastrarDespesa']);
+Route::get('/despesa/lista/form', [DespesasController::class, 'formListarDespesa']);
+Route::get('/despesa/lista', [DespesasController::class, 'listarDepesa']);
+Route::post('/despesa/lista/delete', [DespesasController::class, 'deletarDespesa']);
+Route::post('/despesa/lista/editar', [DespesasController::class, 'editarDespesa']);
